@@ -7,13 +7,20 @@
 # 3. flee
 
 class Hero(): 
-    def __init__(self, health, power):
+    def __init__(self, health, power, alive):
         self.health = health
         self.power = power
+        self.alive = alive
         
     def attack(self, enemy):
         goblin.health -= hero.power
         print("You do {} damage to the goblin.".format(hero.power))
+        
+    def is_alive(self):
+        if self.health > 0:
+            self.alive == True
+        else:
+            self.alive == False
         
         
 class Goblin():
@@ -24,6 +31,12 @@ class Goblin():
     def attack(self, enemy):
         hero.health -= goblin.power
         print("The goblin does {} damage to you.".format(goblin.power))
+    
+    def is_alive(self):
+         if self.health > 0:
+             self.alive = True
+         else:
+             self.alive = False
         
         
         
