@@ -5,7 +5,15 @@
 # 1. fight goblin
 # 2. do nothing - in which case the goblin will attack him anyway
 # 3. flee
-
+class Character():
+    def __init__(self, health, power, alive):
+        self.health = health
+        self.power = power
+        self.alive = alive
+    
+    
+    
+    
 class Hero(): 
     def __init__(self, health, power, alive):
         self.health = health
