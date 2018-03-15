@@ -10,39 +10,41 @@ class Hero():
     def __init__(self, health, power, alive):
         self.health = health
         self.power = power
-        self.alive = alive
+        self.alive = alive 
         
     def attack(self, enemy):
         goblin.health -= hero.power
         print("You do {} damage to the goblin.".format(hero.power))
         
     def is_alive(self):
-        if self.health > 0:
-            self.alive == True
+        self.alive = True
+        if self.health < 1:
+            self.alive = False
         else:
-            self.alive == False
-        
+            return True
+
         
 class Goblin():
-    def __init__(self, health, power):
+    def __init__(self, health, power, alive):
         self.health = health
         self.power = power
+        self.alive = alive
     
     def attack(self, enemy):
         hero.health -= goblin.power
         print("The goblin does {} damage to you.".format(goblin.power))
     
     def is_alive(self):
-         if self.health > 0:
-             self.alive = True
-         else:
-             self.alive = False
+        self.alive = True
+        if self.health < 1:
+            self.alive = False
+        else:
+            return True
         
         
-        
-        
-hero = Hero(10,5)
-goblin = Goblin(6,2)
+hero = Hero(10,5,True)
+goblin = Goblin(6,2,True)
+
 
 def main():
     Hero.health = 10
@@ -50,7 +52,7 @@ def main():
     Goblin.health = 6
     Goblin.power = 2
 
-    while goblin.health > 0 and hero.health > 0:
+    while goblin.is_alive() and hero.is_alive():
         print("You have {} health and {} power.".format(hero.health, hero.power))
         print("The goblin has {} health and {} power.".format(goblin.health, goblin.power))
         print()
