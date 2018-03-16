@@ -6,59 +6,42 @@
 # 2. do nothing - in which case the goblin will attack him anyway
 # 3. flee
 class Character():
-    def __init__(self, health, power, alive):
+    def __init__(self, name, health, power, alive):
+        self.name = name
         self.health = health
         self.power = power
         self.alive = alive
     
+    def is_alive(self):
+        self.alive = True
+        if self.health < 1:
+            self.alive = False
+        else:
+            return True
+            
+    def print_status(self):
+        print("{} status: {} health and {} power.".format(self.name, self.health, self.power))
+        
     
     
-    
-class Hero(): 
-    def __init__(self, health, power, alive):
-        self.health = health
-        self.power = power
-        self.alive = alive 
+class Hero(Character): 
         
     def attack(self, enemy):
         goblin.health -= hero.power
         print("You do {} damage to the goblin.".format(hero.power))
         
-    def is_alive(self):
-        self.alive = True
-        if self.health < 1:
-            self.alive = False
-        else:
-            return True
-            
-    def print_status(self):
-        print("You have {} health and {} power.".format(hero.health, hero.power))
         
-
         
-class Goblin():
-    def __init__(self, health, power, alive):
-        self.health = health
-        self.power = power
-        self.alive = alive
+class Goblin(Character):
     
     def attack(self, enemy):
         hero.health -= goblin.power
         print("The goblin does {} damage to you.".format(goblin.power))
     
-    def is_alive(self):
-        self.alive = True
-        if self.health < 1:
-            self.alive = False
-        else:
-            return True
-            
-    def print_status(self):
-        print("The goblin has {} health and {} power.".format(goblin.health, goblin.power))
         
         
-hero = Hero(10,5,True)
-goblin = Goblin(6,2,True)
+hero = Hero('hero',10,5,True)
+goblin = Goblin('goblin',6,2,True)
 
 
 def main():
